@@ -14,30 +14,46 @@
 </head>
 
 <body>
-    <div id="app">
-        <p>{{ message }}</p>
-    </div>
-    <div id="app-2">
-        <span v-bind:title="message">
-            鼠标悬停几秒钟查看此处动态绑定的提示信息！
-        </span>
+
+    <video id="j-video" width="320" height="240" controls>
+        <source src="../res/test.mp4" type="video/mp4">
+    </video>
+
+    <div id="j-video-bar">
+        <button id="pause" @click="pause()">播放/暂停</button>
+        <button id="screenMax" @click="screenMax()">大</button>
+        <button id="screenMid" @click="screenMid()">中</button>
+        <button id="screenMin" @click="screenMin()">小</button>
     </div>
 
 
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello Vue.js!'
+    <script type="text/javascript">
+
+        var j_video = document.getElementById("j-video");
+        var j_video_bar = new Vue({
+            el: "#j-video-bar",
+            methods: {
+                pause: function () {
+                    if (j_video.paused) {
+                        j_video.play();
+                    }
+                    else {
+                        j_video.pause();
+                    }
+                },
+                screenMax: function () {
+                    j_video.width = 560;
+                },
+                screenMid: function () {
+                    j_video.width = 480;
+                },
+                screenMin: function () {
+                    j_video.width = 320;
+                }
             }
-        })
-        var app2 = new Vue({
-            el: '#app-2',
-            data: {
-                message: '页面加载于 ' + new Date().toLocaleString()
-            }
-        })
+        });
     </script>
+
 
 </body>
 
