@@ -27,28 +27,24 @@
         </div>
     </div>
 
-
-
     <script type="text/javascript">
-        var j_video_screen = document.getElementById("j-video-screen");
+        var j_video_screen = new Vue({
+            el: "#j-video-screen"
+        });
         var j_video_bar = new Vue({
             el: "#j-video-control",
             methods: {
                 pause: function () {
-                    if (j_video_screen.paused) {
-                        j_video_screen.play();
-                    } else {
-                        j_video_screen.pause();
-                    }
+                    j_video_screen.$el.paused ? j_video_screen.$el.play() : j_video_screen.$el.pause();
                 },
                 screenMax: function () {
-                    j_video_screen.width = 560;
+                    j_video_screen.$el.width = 560;
                 },
                 screenMid: function () {
-                    j_video_screen.width = 480;
+                    j_video_screen.$el.width = 480;
                 },
                 screenMin: function () {
-                    j_video_screen.width = 320;
+                    j_video_screen.$el.width = 320;
                 }
             }
         });
