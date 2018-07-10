@@ -15,40 +15,40 @@
 
 <body>
 
-    <video id="j-video" width="320" height="240" controls>
-        <source src="../res/test.mp4" type="video/mp4">
-    </video>
-
-    <div id="j-video-bar">
-        <button id="pause" @click="pause()">播放/暂停</button>
-        <button id="screenMax" @click="screenMax()">大</button>
-        <button id="screenMid" @click="screenMid()">中</button>
-        <button id="screenMin" @click="screenMin()">小</button>
+    <div id="j-video">
+        <video id="j-video-screen" width="320" height="240" controls>
+            <source src="../res/test.mp4" type="video/mp4">
+        </video>
+        <div id="j-video-control">
+            <button id="pause" @click="pause()">播放/暂停</button>
+            <button id="screenMax" @click="screenMax()">大</button>
+            <button id="screenMid" @click="screenMid()">中</button>
+            <button id="screenMin" @click="screenMin()">小</button>
+        </div>
     </div>
 
 
-    <script type="text/javascript">
 
-        var j_video = document.getElementById("j-video");
+    <script type="text/javascript">
+        var j_video_screen = document.getElementById("j-video-screen");
         var j_video_bar = new Vue({
-            el: "#j-video-bar",
+            el: "#j-video-control",
             methods: {
                 pause: function () {
-                    if (j_video.paused) {
-                        j_video.play();
-                    }
-                    else {
-                        j_video.pause();
+                    if (j_video_screen.paused) {
+                        j_video_screen.play();
+                    } else {
+                        j_video_screen.pause();
                     }
                 },
                 screenMax: function () {
-                    j_video.width = 560;
+                    j_video_screen.width = 560;
                 },
                 screenMid: function () {
-                    j_video.width = 480;
+                    j_video_screen.width = 480;
                 },
                 screenMin: function () {
-                    j_video.width = 320;
+                    j_video_screen.width = 320;
                 }
             }
         });
