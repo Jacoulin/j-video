@@ -1,12 +1,81 @@
-#j-video-process {
-	position: relative;
-	width: 500px;
-	height: 6px;
-	border-radius: 3px;
-	background-color: #ccc;
+div{
+	box-sizing: border-box;
 }
 
-#j-video-process-bar{
+
+.v-center {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.h-cneter {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#j-video{
+	background-color: #000;
+}
+
+#j-video-screen{
+	width: calc(100vw);
+	height: calc(100vh - 60px);
+	margin: 0 auto;
+	text-align: center;
+}
+
+#j-video-process {
+	position: relative;
+	background-color: #fff;
+	height: 30px;
+	width: 100%;
+	margin: 0 auto;
+
+	bottom: 0;
+}
+
+#j-video-process-back {
+	position: relative;
+	vertical-align: middle;
+	text-align: center;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+
+	float: left;
+
+}
+
+#j-video-process-next {
+	position: relative;
+	vertical-align: middle;
+	text-align: center;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+
+	float: right;
+
+
+}
+
+#j-video-process-bar {
+	position: relative;
+	vertical-align: middle;
+	width: 100%;
+	height: 6px;
+	top: 50%;
+	width: calc(100% - 56px);
+	transform: translateY(-50%);
+	border-radius: 3px;
+	background-color: #ccc;
+
+	float: left;
+}
+
+#j-video-process-real {
 	position: absolute;
 	display: inline-block;
 	width: 100px;
@@ -15,7 +84,7 @@
 	background-color: #777;
 }
 
-#j-video-process-drag{
+#j-video-process-drag {
 	position: absolute;
 	display: inline-block;
 	top: -5px;
@@ -29,6 +98,16 @@
 	cursor: pointer;
 }
 
-#j-video-process-drag:hover{
+#j-video-process-drag:hover {
 	background-color: #555;
+}
+
+#j-video-control {
+	position: relative;
+	background-color: #fff;
+	height: 30px;
+	width: 100%;
+	margin: 0 auto;
+
+	bottom: 0;
 }

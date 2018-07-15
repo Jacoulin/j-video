@@ -6,7 +6,7 @@
     <title>首页</title>
 
 
-    <link rel="stylesheet" href="../css/svg.css">
+    <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/common.css">
     <script src="../js/vue.js"></script>
 
@@ -15,25 +15,35 @@
 <body>
 
     <div id="j-video">
-        <video id="j-video-screen" width="320" height="240" controls>
-            <!-- <source src="../res/test.mp4" type="video/mp4"> -->
-        </video>
-        <div id="j-video-control">
-            <button id="pause" @click="pause()">播放/暂停</button>
-            <button id="screenMax" @click="screenMax()">大</button>
-            <button id="screenMid" @click="screenMid()">中</button>
-            <button id="screenMin" @click="screenMin()">小</button>
+        <div id="j-video-screen">
+            <video width="100%" height="100%" controls>
+                <source src="../res/test.mp4" type="video/mp4">
+            </video>
         </div>
+
+        <div id="j-video-process">
+            <div id="j-video-process-back" @click="pause()">&lt;&lt;</div>
+            <div id="j-video-process-bar">
+                <div id="j-video-process-real"></div>
+                <div id="j-video-process-drag"></div>
+            </div>
+            <div id="j-video-process-next" @click="pause()">&gt;&gt;</div>
+        </div>
+
+        <div id="j-video-control">
+            <button id="pause" @click="pause()">&gt;</button>
+            <button id="screenMax" @click="screenMax()">max</button>
+            <button id="screenMid" @click="screenMid()">mid</button>
+            <button id="screenMin" @click="screenMin()">min</button>
+        </div>
+
     </div>
 
-    <div id="j-video-process">
-        <div id="j-video-process-bar"></div>
-        <div id="j-video-process-drag"></div>
-    </div>
+
 
     <script type="text/javascript">
         var j_video_screen = new Vue({
-            el: "#j-video-screen"
+            el: "#j-video-screen video"
         });
         var j_video_bar = new Vue({
             el: "#j-video-control",
