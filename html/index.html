@@ -15,13 +15,18 @@
 <body>
 
     <div id="j-video">
-        <div id="j-video-screen">
-            <video width="100%" height="100%" controls>
-                <source src="../res/test.mp4" type="video/mp4">
+
+        <div id="j-video-menu"></div>
+
+        <div id="j-video-screen"> 
+            <video width="100%" height="100%">
+                <source src="../res/test.mp4" type="video/mp4"> 
             </video>
         </div>
 
-        <div id="j-video-process">
+        <div id="j-video-upload"></div>
+
+        <div id="j-video-process" control="false">
             <div id="j-video-process-back" @click="pause()">&lt;&lt;</div>
             <div id="j-video-process-bar">
                 <div id="j-video-process-real"></div>
