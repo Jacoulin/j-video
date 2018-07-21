@@ -1,3 +1,95 @@
+@keyframes j-video-process-bar {
+	0% {
+		height: 6px;
+		top: -3px;
+	}
+	100% {
+		height: 8px;
+		top: -4px;
+	}
+}
+
+@keyframes j-video-process-load {
+	0% {
+		height: 6px;
+	}
+	100% {
+		height: 8px;
+	}
+}
+
+@keyframes j-video-process-play {
+	0% {
+		height: 6px;
+	}
+	100% {
+		height: 8px;
+	}
+}
+
+@keyframes j-video-process-drag {
+	0% {
+		opacity: 0;
+		width: 0;
+		height: 0;
+		right: 0
+	}
+	10% {
+		opacity: .1;
+		width: 2px;
+		height: 2px;
+		right: -1px
+	}
+	20% {
+		opacity: .2;
+		width: 4px;
+		height: 4px;
+		right: -2px
+	}
+	30% {
+		opacity: .3;
+		width: 6px;
+		height: 6px;
+		right: -3px
+	}
+	40% {
+		opacity: .4;
+		width: 8px;
+		height: 8px;
+		right: -4px
+	}
+	50% {
+		opacity: .5;
+		width: 10px;
+		height: 10px;
+		right: -5px;
+	}
+	60% {
+		opacity: .6;
+		width: 12px;
+		height: 12px;
+		right: -6px;
+	}
+	70% {
+		opacity: .7;
+		width: 14px;
+		height: 14px;
+		right: -7px;
+	}
+	80% {
+		opacity: .8;
+		width: 16px;
+		height: 16px;
+		right: -8px;
+	}
+	90% {
+		opacity: .9;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 div {
 	box-sizing: border-box;
 }
@@ -16,6 +108,8 @@ div {
 
 #j-video {
 	background-color: #000;
+	/* 防止进度条撑大窗口 */
+	overflow: hidden;
 }
 
 #j-video-menu {
@@ -52,7 +146,6 @@ div {
 }
 
 #j-video-process-back {
-
 	position: relative;
 	vertical-align: middle;
 	text-align: center;
@@ -63,7 +156,6 @@ div {
 }
 
 #j-video-process-next {
-
 	position: relative;
 	vertical-align: middle;
 	text-align: center;
@@ -84,52 +176,78 @@ div {
 	border-radius: 3px;
 	background-color: #ccc;
 	float: left;
-	opacity: ;
-	transition: opacity 
 }
 
-#j-video-process-real {
+#j-video-process-load {
 	position: absolute;
-	display: inline-block;
-	width: 100px;
+	width: 70%;
+	height: 6px;
+	border-radius: 3px;
+	background-color: #aaa;
+}
+
+#j-video-process-play {
+	position: absolute;
+	width: 50%;
 	height: 6px;
 	border-radius: 3px;
 	background-color: #777;
+	float: left;
 }
 
 #j-video-process-drag {
-	position: absolute;
+	position: relative;
 	display: none;
 	/* 初始位置 */
-	/* left: -5px; */
+	right: -8px;
 	top: 50%;
 	transform: translateY(-50%);
-	left: 92px;
-	width: 20px;
-	height: 20px;
-	border-radius: 10px;
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
 	background-color: #fff;
 	border: 1px solid #777;
+	float: right;
+}
+
+#j-video-process[control='false'] #j-video-process-bar:hover {
 	cursor: pointer;
+	height: 8px;
+	top: -4px;
+	animation: j-video-process-bar;
+	animation-duration: .3s;
 }
 
-#j-video-process-bar:hover #j-video-process-drag{
+#j-video-process[control='false'] #j-video-process-bar:hover #j-video-process-load {
+	height: 8px;
+	animation: j-video-process-play;
+	animation-duration: .3s;
+}
+
+#j-video-process[control='false'] #j-video-process-bar:hover #j-video-process-play {
+	height: 8px;
+	animation: j-video-process-play;
+	animation-duration: .3s;
+}
+
+#j-video-process[control='false'] #j-video-process-bar:hover #j-video-process-drag {
 	display: inline-block;
+	animation: j-video-process-drag;
+	animation-duration: .3s;
 }
 
-#j-video-process[control='false'] #j-video-process-back,
-#j-video-process[control='false'] #j-video-process-next{
+#j-video-process[control='false'] #j-video-process-back, #j-video-process[control='false'] #j-video-process-next {
 	display: none;
 }
 
-#j-video-process[control='false'] #j-video-process-bar{
+#j-video-process[control='false'] #j-video-process-bar {
 	width: 100%;
 	border-radius: 0;
-	top: 0;
+	top: -3px;
 	transform: translateY(0%);
 }
 
-#j-video-process[control='false'] #j-video-process-real{
+#j-video-process[control='false'] #j-video-process-load, #j-video-process[control='false'] #j-video-process-play {
 	border-radius: 0;
 }
 
