@@ -119,6 +119,57 @@ div {
 	width: 100%;
 }
 
+#j-video-setting{
+	position: relative;
+	float: left;
+	width: 30px;
+	height: 30px;
+
+	top: 50%;
+	left: 10px;
+	transform: translateY(-50%);
+
+	border-radius: 15px;
+	border: 1px solid #777;
+}
+
+#j-video-min{
+	position: relative;
+	float: right;
+	width: 30px;
+	height: 30px;
+
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 15px;
+	border: 1px solid #777;
+}
+
+#j-video-max{
+	position: relative;
+	float: right;
+	width: 30px;
+	height: 30px;
+
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 15px;
+	border: 1px solid #777;
+}
+
+#j-video-close{
+	position: relative;
+	float: right;
+	width: 30px;
+	height: 30px;
+
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	border-radius: 15px;
+	border: 1px solid #777;
+}
+
 #j-video-upload {
 	position: absolute;
 	top: 50%;
