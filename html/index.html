@@ -16,37 +16,46 @@
 
     <div id="j-video">
 
-        <div id="j-video-menu">
-            <div id="j-video-setting"></div>
-            <div id="j-video-min">-</div>
-            <div id="j-video-max">[]</div>
-            <div id="j-video-close">X</div>
+        <div id="j-video-top">
+            <div id="j-video-top-left">
+                <div id="j-video-frame-setting"></div>
+            </div>
+            <div id="j-video-top-center">
+                <span>文件名</span>
+            </div>
+            <div id="j-video-top-right">
+                <div id="j-video-frame-min"></div>
+                <div id="j-video-frame-max"></div>
+                <div id="j-video-frame-close"></div>
+            </div>
         </div>
 
         <div id="j-video-screen"> 
             <video width="100%" height="100%">
                 <!-- <source src="../res/test.mp4" type="video/mp4">  -->
             </video>
+            <div id="j-video-upload"></div>
+            <div id="j-video-play"></div>
         </div>
 
-        <div id="j-video-upload"></div>
-
-        <div id="j-video-process" control="false">
-            <div id="j-video-process-back" @click="pause()">&lt;&lt;</div>
-            <div id="j-video-process-bar">
-                <div id="j-video-process-load"></div>
-                <div id="j-video-process-play">
-                    <div id="j-video-process-drag"></div>
+        <div id="j-video-bottom">
+            <div id="j-video-process" control="false">
+                <div id="j-video-process-back" @click="pause()">&lt;&lt;</div>
+                <div id="j-video-process-bar">
+                    <div id="j-video-process-load"></div>
+                    <div id="j-video-process-play">
+                        <div id="j-video-process-drag"></div>
+                    </div>
                 </div>
+                <div id="j-video-process-next" @click="pause()">&gt;&gt;</div>
             </div>
-            <div id="j-video-process-next" @click="pause()">&gt;&gt;</div>
-        </div>
-
-        <div id="j-video-control">
-            <button id="pause" @click="pause()">&gt;</button>
-            <button id="screenMax" @click="screenMax()">max</button>
-            <button id="screenMid" @click="screenMid()">mid</button>
-            <button id="screenMin" @click="screenMin()">min</button>
+    
+            <div id="j-video-control">
+                <button id="pause" @click="pause()">&gt;</button>
+                <button id="screenMax" @click="screenMax()">max</button>
+                <button id="screenMid" @click="screenMid()">mid</button>
+                <button id="screenMin" @click="screenMin()">min</button>
+            </div>
         </div>
 
     </div>

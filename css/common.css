@@ -106,66 +106,81 @@ div {
 	transform: translateX(-50%);
 }
 
+.l-float {
+	float: left;
+}
+
+.r-float {
+	float: right
+}
+
 #j-video {
 	background-color: #000;
 	/* 防止进度条撑大窗口 */
 	overflow: hidden;
 }
 
-#j-video-menu {
+#j-video-top {
 	position: relative;
 	background-color: #fff;
 	height: 40px;
 	width: 100%;
 }
 
-#j-video-setting{
+#j-video-top-left{
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#j-video-top-center{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+#j-video-top-right{
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+}
+
+#j-video-frame-setting {
+	position: relative;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	border: 1px solid #777;
+}
+
+#j-video-frame-min {
+	position: relative;
+	float: left;
+	margin-right: 10px;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	border: 1px solid #777;
+}
+
+#j-video-frame-max {
 	position: relative;
 	float: left;
 	width: 30px;
 	height: 30px;
-
-	top: 50%;
-	left: 10px;
-	transform: translateY(-50%);
-
 	border-radius: 15px;
 	border: 1px solid #777;
 }
 
-#j-video-min{
+#j-video-frame-close {
 	position: relative;
-	float: right;
+	float: left;
+	margin-left: 10px;
 	width: 30px;
 	height: 30px;
-
-	top: 50%;
-	transform: translateY(-50%);
-	border-radius: 15px;
-	border: 1px solid #777;
-}
-
-#j-video-max{
-	position: relative;
-	float: right;
-	width: 30px;
-	height: 30px;
-
-	top: 50%;
-	transform: translateY(-50%);
-	border-radius: 15px;
-	border: 1px solid #777;
-}
-
-#j-video-close{
-	position: relative;
-	float: right;
-	width: 30px;
-	height: 30px;
-
-	top: 50%;
-	right: 10px;
-	transform: translateY(-50%);
 	border-radius: 15px;
 	border: 1px solid #777;
 }
@@ -287,7 +302,8 @@ div {
 	animation-duration: .3s;
 }
 
-#j-video-process[control='false'] #j-video-process-back, #j-video-process[control='false'] #j-video-process-next {
+#j-video-process[control='false'] #j-video-process-back,
+#j-video-process[control='false'] #j-video-process-next {
 	display: none;
 }
 
@@ -298,7 +314,8 @@ div {
 	transform: translateY(0%);
 }
 
-#j-video-process[control='false'] #j-video-process-load, #j-video-process[control='false'] #j-video-process-play {
+#j-video-process[control='false'] #j-video-process-load,
+#j-video-process[control='false'] #j-video-process-play {
 	border-radius: 0;
 }
 
