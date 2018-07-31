@@ -139,7 +139,7 @@ div {
 	position: absolute;
 
 	/* 隐藏组件 */
-	display: none;
+	/* display: none; */
 
 	top: 50%;
 	left: 50%;
@@ -257,6 +257,7 @@ div {
 	width: 200px;
 	height: 100%;
 	border-left: 1px solid #aaa;
+	background: rgba(20, 20, 20, 0.8);
 }
 
 #j-video-bottom {
@@ -347,7 +348,7 @@ div {
 
 #j-video-bottom[show='true'] #j-video-process[control='false']:hover #j-video-process-bar #j-video-process-load {
 	height: inherit;
-	animation: j-video-process-play;
+	animation: j-video-process-load;
 	animation-duration: .3s;
 }
 
