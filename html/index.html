@@ -16,13 +16,6 @@
 
     <div id="j-video">
 
-        <div id="j-video-upload">
-            <div id="j-video-upload-open">打开文件</div>
-            <span class="v-line-1px v-height-50pc l-float v-center line-gray"></span>
-            <div id="j-video-upload-select"></div>
-        </div>
-        <div id="j-video-play"></div>
-
         <div id="j-video-top">
             <div id="j-video-top-left">
                 <div id="j-video-frame-setting"></div>
@@ -72,6 +65,16 @@
             </div>
         </div>
 
+        <div id="j-video-upload">
+            <form enctype="multipart/form-data" method="post">
+                <input type="file" name="file" id="pic" />
+                <div id="j-video-upload-open" @click="upload()">打开文件</div>
+                <div id="j-video-upload-split"></div>
+                <div id="j-video-upload-select">▼</div>
+            </form>
+        </div>
+        <div id="j-video-play"></div>
+
     </div>
 
 
@@ -94,6 +97,17 @@
                 },
                 screenMin: function () {
                     j_video_screen.$el.width = 320;
+                }
+            }
+        });
+        var temp = new Vue({
+            el: "#j-video-upload input"
+        });
+        var j_video_upload = new Vue({
+            el:'#j-video-upload',
+            methods: {
+                upload: function(){
+                    temp.$el.click();
                 }
             }
         });

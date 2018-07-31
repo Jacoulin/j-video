@@ -135,44 +135,6 @@ div {
 	overflow: hidden;
 }
 
-#j-video-upload {
-	position: absolute;
-
-	/* 隐藏组件 */
-	/* display: none; */
-
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
-	width: 160px;
-	height: 40px;
-	line-height: 40px;
-	background-color: rgba(20, 20, 20, 0.8);
-	border-radius: 20px;
-	border: 1px solid #555;
-	text-align: center;
-}
-
-#j-video-upload-open {
-	position: relative;
-	float: left;
-	width: 119px;
-	height: 38px;
-	line-height: 38px;
-	color: #555;
-	border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px;
-}
-
-#j-video-upload-select {
-	position: relative;
-	float: right;
-	width: 38px;
-	height: 38px;
-	border-top-right-radius: 20px;
-	border-bottom-right-radius: 20px;
-}
-
 #j-video-top {
 	position: absolute;
 	top: 0;
@@ -252,6 +214,7 @@ div {
 
 #j-video-screen-right{
 	position: absolute;
+	display: none;
 	top: 0;
 	right: 0;
 	width: 200px;
@@ -400,3 +363,80 @@ div {
 	height: 4px;
 	top: -4px;
 }
+
+#j-video-upload {
+	position: absolute;
+
+	/* 隐藏组件 */
+	/* display: none; */
+
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: 160px;
+	height: 40px;
+	line-height: 40px;
+	background-color: rgba(20, 20, 20, 0.8);
+	border-radius: 20px;
+	border: 1px solid #555;
+	text-align: center;
+}
+
+#j-video-upload form{
+	width: inherit;
+	height: inherit;
+}
+
+#j-video-upload form input{
+	display: none;
+}
+
+#j-video-upload-open {
+	position: relative;
+	float: left;
+	width: 121px;
+	height: 38px;
+	line-height: 38px;
+	color: #555;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	cursor: pointer;
+}
+
+#j-video-upload-open:hover{
+	color: #aaa;
+	background-color: rgba(50, 50, 50, 0.8);
+}
+
+#j-video-upload:hover #j-video-upload-split{
+	height: calc(100% - 2px);
+}
+
+#j-video-upload-split{
+	position: relative;
+	float: left;
+	background: #555;
+	width: 1px;
+	height: 50%;
+    top: calc(50% - 1px);
+    transform: translateY(-50%);
+}
+
+
+#j-video-upload-select {
+	position: relative;
+	float: right;
+	width: 38px;
+	height: 38px;
+	color: #555;
+	font-size: 12px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	cursor: pointer;
+}
+
+#j-video-upload-select:hover{
+	color: #aaa;
+	background-color: rgba(50, 50, 50, 0.8);
+}
+
