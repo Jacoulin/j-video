@@ -404,7 +404,7 @@ div {
 #j-video-upload-open {
 	position: relative;
 	float: left;
-	width: 121px;
+	width: 119px;
 	height: 36px;
 	line-height: 36px;
 	color: #555;
@@ -419,7 +419,7 @@ div {
 }
 
 #j-video-upload:hover #j-video-upload-split{
-	height: calc(100% - 2px);
+	height: 100%;
 }
 
 #j-video-upload-split{
@@ -428,7 +428,7 @@ div {
 	background: #555;
 	width: 1px;
 	height: 50%;
-    top: calc(50% - 2px);
+    top: 50%;
     transform: translateY(-50%);
 }
 
