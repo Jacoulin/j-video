@@ -67,8 +67,8 @@
 
         <div id="j-video-upload">
             <form enctype="multipart/form-data" method="post">
-                <input type="file" name="file" id="pic" />
-                <div id="j-video-upload-open" @click="upload()">打开文件</div>
+                <input type="file" name="file" id="pic" @change="upload()"/>
+                <div id="j-video-upload-open" @click="open()">打开文件</div>
                 <div id="j-video-upload-split"></div>
                 <div id="j-video-upload-select">▼</div>
             </form>
@@ -101,14 +101,19 @@
             }
         });
         var temp = new Vue({
-            el: "#j-video-upload input"
+            el: "#j-video-upload input",
+            methods:{
+                upload: function(){
+                    // alert(this.$el.files[0]);
+                    console.log(this.$el.files[0]);
+                }
+            }
         });
         var j_video_upload = new Vue({
             el:'#j-video-upload',
             methods: {
-                upload: function(){
+                open: function(){
                     temp.$el.click();
-                    alert(temp.$el.value());
                 }
             }
         });
