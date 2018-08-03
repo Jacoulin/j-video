@@ -7,6 +7,7 @@
 
 
     <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/iconfont.css">
     <link rel="stylesheet" href="../css/common.css">
     <script src="../js/vue.js"></script>
 
@@ -24,9 +25,21 @@
                 <span>文件名</span>
             </div>
             <div id="j-video-top-right">
-                <div id="j-video-frame-min"></div>
+                <ul>
+                    <li>
+                        <a id="btn-min">
+                            <i class="iconfont icon-min"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="btn-close">
+                            <i class="iconfont icon-close"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- <div id="j-video-frame-min"></div>
                 <div id="j-video-frame-max"></div>
-                <div id="j-video-frame-close"></div>
+                <div id="j-video-frame-close"></div> -->
             </div>
         </div>
 
@@ -67,7 +80,7 @@
 
         <div id="j-video-upload">
             <form enctype="multipart/form-data" method="post">
-                <input type="file" name="file" id="pic" @change="upload()"/>
+                <input type="file" name="file" id="pic" @change="upload()" />
                 <div id="j-video-upload-open" @click="open()">打开文件</div>
                 <div id="j-video-upload-split"></div>
                 <div id="j-video-upload-select">▼</div>
@@ -80,6 +93,16 @@
 
 
     <script type="text/javascript">
+
+        // 窗口控制
+        var ipc = require('electron').ipcRenderer;
+		document.getElementById('btn-min').addEventListener('click', () => {
+			ipc.send('window-min');
+		})
+		document.getElementById('btn-close').addEventListener('click', () => {
+			ipc.send('window-close');
+		})
+
         var j_video_screen = new Vue({
             el: "#j-video-screen video"
         });
@@ -102,17 +125,28 @@
         });
         var temp = new Vue({
             el: "#j-video-upload input",
-            methods:{
-                upload: function(){
+            methods: {
+                upload: function () {
                     // alert(this.$el.files[0]);
-                    console.log(this.$el.files[0]);
+                    console.log(this.$el.files);
+                    var file = this.$el.files[0];
+                    var name = file.name;
+                    var size = file.size;
+                    console.log("文件名:" + name + "大小:" + size);
+
+                    var reader = new FileReader();
+
+                    reader.onload = function () {
+                        //当读取完成后回调这个函数,然后此时文件的内容存储到了result中,直接操作即可
+                        console.log(this.result);
+                    }
                 }
             }
         });
         var j_video_upload = new Vue({
-            el:'#j-video-upload',
+            el: '#j-video-upload',
             methods: {
-                open: function(){
+                open: function () {
                     temp.$el.click();
                 }
             }

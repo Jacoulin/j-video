@@ -34,7 +34,7 @@ function createWindow(){
         frame: false
     })
     // 加载静态资源
-    mainWindow.loadURL('file://' + __dirname + '/html/login.html');
+    mainWindow.loadURL('file://' + __dirname + '/html/index.html');
 
     // 打开开发者工具
     // mainWindow.webContents.openDevTools()

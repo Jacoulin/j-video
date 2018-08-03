@@ -138,9 +138,11 @@ div {
 #j-video-top {
 	position: absolute;
 	top: 0;
-	background-color: rgba(255, 255, 255, 0);
+	background-color: #cc3333;
 	height: 40px;
 	width: 100%;
+	/* 避免被视频的层级被覆盖 */
+	z-index: 1; 
 }
 
 #j-video-top-left {
@@ -154,6 +156,7 @@ div {
 	position: absolute;
 	left: 50%;
 	top: 50%;
+	color: #ccc;
 	transform: translateX(-50%) translateY(-50%);
 }
 
@@ -170,6 +173,44 @@ div {
 	height: 30px;
 	border-radius: 15px;
 	border: 1px solid #777;
+}
+
+
+#j-video-top-right ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+#j-video-top-right li{
+	margin-right: 10px;
+}
+
+#j-video-top-right li:last-child{
+	margin-right: 0;
+}
+
+#j-video-top-right li a {
+	
+	display: block;
+	text-align: center;
+	color: #ccc;
+	cursor: pointer;
+}
+
+#j-video-top-right li a:hover {
+	color: #fff;
+}
+
+#j-video-top-right li a.active {
+	color: #aaa;
 }
 
 #j-video-frame-min {
