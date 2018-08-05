@@ -7,7 +7,8 @@
 
 
     <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/iconfont.css">
+    <!-- <link rel="stylesheet" href="../css/iconfont.css"> -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_221354_yz900mmny2h.css">
     <link rel="stylesheet" href="../css/common.css">
     <script src="../js/vue.js"></script>
 
@@ -19,7 +20,9 @@
 
         <div id="j-video-top">
             <div id="j-video-top-left">
-                <div id="j-video-frame-setting"></div>
+                <a id="btn-setting">
+                    <i class="iconfont icon-more"></i>
+                </a>
             </div>
             <div id="j-video-top-center">
                 <span>文件名</span>
@@ -29,6 +32,11 @@
                     <li>
                         <a id="btn-min">
                             <i class="iconfont icon-min"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="btn-max">
+                            <i class="iconfont icon-max"></i>
                         </a>
                     </li>
                     <li>
@@ -46,7 +54,7 @@
         <div id="j-video-screen">
             <div id="j-video-screen-left"></div>
             <video width="100%" height="100%">
-                <!-- <source src="../res/test.mp4" type="video/mp4"> -->
+                <source src="../res/test.mp4" type="video/mp4">
             </video>
             <div id="j-video-screen-right">
                 <ul>
@@ -58,7 +66,7 @@
         </div>
 
 
-        <div id="j-video-bottom" show="false">
+        <div id="j-video-bottom" show="true">
             <div id="j-video-process" control="false">
                 <div id="j-video-process-back" @click="pause()">&lt;&lt;</div>
                 <div id="j-video-process-bar">
@@ -71,10 +79,25 @@
             </div>
 
             <div id="j-video-control">
-                <button id="pause" @click="pause()">&gt;</button>
-                <button id="screenMax" @click="screenMax()">max</button>
-                <button id="screenMid" @click="screenMid()">mid</button>
-                <button id="screenMin" @click="screenMin()">min</button>
+                <!-- <button id="pause" @click="pause()">&gt;</button> -->
+                <!-- <button id="screenMax" @click="screenMax()">max</button> -->
+                <!-- <button id="screenMid" @click="screenMid()">mid</button> -->
+                <!-- <button id="screenMin" @click="screenMin()">min</button> -->
+                <div id="j-video-control-left">
+                    <div id="play" @click="play()">
+                        <a>
+                            <i class="iconfont" :class="{'icon-play': !played, 'icon-pause': played}"></i>
+                        </a>
+                    </div>
+                    <div id="next">
+                        <a>
+                            <i class="iconfont icon-next"></i>
+                        </a>
+                    </div>
+                    <div>
+                        {{currentTime}}/{{duration}}
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -94,23 +117,30 @@
 
     <script type="text/javascript">
 
-        // 窗口控制
-        var ipc = require('electron').ipcRenderer;
-		document.getElementById('btn-min').addEventListener('click', () => {
-			ipc.send('window-min');
-		})
-		document.getElementById('btn-close').addEventListener('click', () => {
-			ipc.send('window-close');
-		})
+        // 当前环境：b for broswer, c for client
+
+        const env = "c";
 
         var j_video_screen = new Vue({
             el: "#j-video-screen video"
         });
         var j_video_bar = new Vue({
-            el: "#j-video-control",
+            el: "#j-video-control #j-video-control-left",
+            data: {
+                played: false,
+                currentTime: j_video_screen.$el.currentTime,
+                duration: j_video_screen.$el.duration
+            },
             methods: {
-                pause: function () {
-                    j_video_screen.$el.paused ? j_video_screen.$el.play() : j_video_screen.$el.pause();
+                play: function () {
+                    if (j_video_screen.$el.paused) {
+                        this.played = true;
+                        alert(j_video_screen.$el.duration);
+                        j_video_screen.$el.play();
+                    } else {
+                        this.played = false;
+                        j_video_screen.$el.pause();
+                    }
                 },
                 screenMax: function () {
                     j_video_screen.$el.width = 560;
@@ -151,6 +181,27 @@
                 }
             }
         });
+
+        // 窗口控制：c
+
+        switch(env){
+            case "c":
+                var ipc = require('electron').ipcRenderer;
+                document.getElementById('btn-min').addEventListener('click', () => {
+                    ipc.send('window-min');
+                });
+                document.getElementById('btn-max').addEventListener('click', () => {
+                    ipc.send('window-max');
+                });
+                document.getElementById('btn-close').addEventListener('click', () => {
+                    ipc.send('window-close');
+                });
+                break;
+            case "b":
+            default:
+                break;
+        };
+
     </script>
 
 
