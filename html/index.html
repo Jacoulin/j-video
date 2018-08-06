@@ -119,12 +119,12 @@
 
         // 当前环境：b for broswer, c for client
 
-        const env = "c";
+        const env = "b";
 
-        var j_video_screen = new Vue({
+        let j_video_screen = new Vue({
             el: "#j-video-screen video"
         });
-        var j_video_bar = new Vue({
+        let j_video_bar = new Vue({
             el: "#j-video-control #j-video-control-left",
             data: {
                 played: false,
@@ -135,7 +135,6 @@
                 play: function () {
                     if (j_video_screen.$el.paused) {
                         this.played = true;
-                        alert(j_video_screen.$el.duration);
                         j_video_screen.$el.play();
                     } else {
                         this.played = false;
@@ -153,18 +152,18 @@
                 }
             }
         });
-        var temp = new Vue({
+        let temp = new Vue({
             el: "#j-video-upload input",
             methods: {
                 upload: function () {
                     // alert(this.$el.files[0]);
                     console.log(this.$el.files);
-                    var file = this.$el.files[0];
-                    var name = file.name;
-                    var size = file.size;
+                    let file = this.$el.files[0];
+                    let name = file.name;
+                    let size = file.size;
                     console.log("文件名:" + name + "大小:" + size);
 
-                    var reader = new FileReader();
+                    let reader = new FileReader();
 
                     reader.onload = function () {
                         //当读取完成后回调这个函数,然后此时文件的内容存储到了result中,直接操作即可
@@ -173,7 +172,7 @@
                 }
             }
         });
-        var j_video_upload = new Vue({
+        let j_video_upload = new Vue({
             el: '#j-video-upload',
             methods: {
                 open: function () {
@@ -186,7 +185,7 @@
 
         switch(env){
             case "c":
-                var ipc = require('electron').ipcRenderer;
+                let ipc = require('electron').ipcRenderer;
                 document.getElementById('btn-min').addEventListener('click', () => {
                     ipc.send('window-min');
                 });
@@ -200,7 +199,7 @@
             case "b":
             default:
                 break;
-        };
+        }
 
     </script>
 
