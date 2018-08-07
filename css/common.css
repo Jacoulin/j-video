@@ -129,10 +129,14 @@ div {
 }
 
 #j-video {
+	margin: 10px;
 	position: absolute;
 	background-color: #000;
 	/* 防止进度条撑大窗口 */
 	overflow: hidden;
+	-moz-box-shadow:0 0 10px #06c;
+	-webkit-box-shadow:0 0 10px #06c;
+	box-shadow:0 0 10px #000;
 }
 
 #j-video-top {
@@ -260,8 +264,8 @@ div {
 }
 
 #j-video-screen {
-	width: calc(100vw);
-	height: calc(100vh - 74px);
+	width: calc(100vw - 20px);
+	height: calc(100vh - 94px);
 	margin: 0 auto;
 	text-align: center;
 }

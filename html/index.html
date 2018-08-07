@@ -53,7 +53,7 @@
 
         <div id="j-video-screen">
             <div id="j-video-screen-left"></div>
-            <video width="100%" height="100%">
+            <video ref="video" width="100%" height="100%" @loadedmetadata="loadedmetadata()" @timeupdate="timeupdate()">
                 <source src="../res/test.mp4" type="video/mp4">
             </video>
             <div id="j-video-screen-right">
@@ -113,96 +113,7 @@
 
     </div>
 
-
-
-    <script type="text/javascript">
-
-        // 当前环境：b for broswer, c for client
-
-        const env = "b";
-
-        let j_video_screen = new Vue({
-            el: "#j-video-screen video"
-        });
-        let j_video_bar = new Vue({
-            el: "#j-video-control #j-video-control-left",
-            data: {
-                played: false,
-                currentTime: j_video_screen.$el.currentTime,
-                duration: j_video_screen.$el.duration
-            },
-            methods: {
-                play: function () {
-                    if (j_video_screen.$el.paused) {
-                        this.played = true;
-                        j_video_screen.$el.play();
-                    } else {
-                        this.played = false;
-                        j_video_screen.$el.pause();
-                    }
-                },
-                screenMax: function () {
-                    j_video_screen.$el.width = 560;
-                },
-                screenMid: function () {
-                    j_video_screen.$el.width = 480;
-                },
-                screenMin: function () {
-                    j_video_screen.$el.width = 320;
-                }
-            }
-        });
-        let temp = new Vue({
-            el: "#j-video-upload input",
-            methods: {
-                upload: function () {
-                    // alert(this.$el.files[0]);
-                    console.log(this.$el.files);
-                    let file = this.$el.files[0];
-                    let name = file.name;
-                    let size = file.size;
-                    console.log("文件名:" + name + "大小:" + size);
-
-                    let reader = new FileReader();
-
-                    reader.onload = function () {
-                        //当读取完成后回调这个函数,然后此时文件的内容存储到了result中,直接操作即可
-                        console.log(this.result);
-                    }
-                }
-            }
-        });
-        let j_video_upload = new Vue({
-            el: '#j-video-upload',
-            methods: {
-                open: function () {
-                    temp.$el.click();
-                }
-            }
-        });
-
-        // 窗口控制：c
-
-        switch(env){
-            case "c":
-                let ipc = require('electron').ipcRenderer;
-                document.getElementById('btn-min').addEventListener('click', () => {
-                    ipc.send('window-min');
-                });
-                document.getElementById('btn-max').addEventListener('click', () => {
-                    ipc.send('window-max');
-                });
-                document.getElementById('btn-close').addEventListener('click', () => {
-                    ipc.send('window-close');
-                });
-                break;
-            case "b":
-            default:
-                break;
-        }
-
-    </script>
-
+    <script src="../js/index.js"></script>
 
 </body>
 

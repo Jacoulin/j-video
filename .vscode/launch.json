@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Electron Main",
-            "runtimeExecutable": "C:/Users/Jacoulin/node_modules/.bin/electron",
+            "runtimeExecutable": "C:/Users/52800/node_modules/.bin/electron",
             "program": "${workspaceFolder}/main.js",
             "protocol": "inspector"
         }
