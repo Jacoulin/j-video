@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <!-- <link rel="stylesheet" href="../css/iconfont.css"> -->
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_221354_yz900mmny2h.css">
+    <link rel="stylesheet" href="../css/materialdesignicons.css">
     <link rel="stylesheet" href="../css/common.css">
     <script src="../js/vue.js"></script>
 
@@ -21,7 +22,7 @@
         <div id="j-video-top">
             <div id="j-video-top-left">
                 <a id="btn-setting">
-                    <i class="iconfont icon-more"></i>
+                    <i class="mdi mdi-menu mdi-18px"></i>
                 </a>
             </div>
             <div id="j-video-top-center">
@@ -31,17 +32,17 @@
                 <ul>
                     <li>
                         <a id="btn-min">
-                            <i class="iconfont icon-min"></i>
+                            <i class="mdi mdi-window-minimize mdi-18px"></i>
                         </a>
                     </li>
                     <li>
                         <a id="btn-max">
-                            <i class="iconfont icon-max"></i>
+                            <i class="mdi mdi-window-maximize mdi-18px"></i>
                         </a>
                     </li>
                     <li>
                         <a id="btn-close">
-                            <i class="iconfont icon-close"></i>
+                            <i class="mdi mdi-window-close mdi-18px"></i>
                         </a>
                     </li>
                 </ul>
@@ -86,15 +87,15 @@
                 <div id="j-video-control-left">
                     <div id="play" @click="play()">
                         <a>
-                            <i class="iconfont" :class="{'icon-play': !played, 'icon-pause': played}"></i>
+                            <i class="mdi mdi-24px" :class="{'mdi-play': !played, 'mdi-pause': played}"></i>
                         </a>
                     </div>
                     <div id="next">
                         <a>
-                            <i class="iconfont icon-next"></i>
+                            <i class="mdi mdi-skip-next mdi-24px"></i>
                         </a>
                     </div>
-                    <div>
+                    <div id="time">
                         {{currentTime}}/{{duration}}
                     </div>
                 </div>

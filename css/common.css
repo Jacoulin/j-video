@@ -155,15 +155,15 @@ div {
 	position: absolute;
 	left: 10px;
 	top: 50%;
+	color: #ccc;
 	transform: translateY(-50%);
 
 	-webkit-app-region: no-drag;
 }
 
 #j-video-top-left a{
-	display: block;
+	display: inline-block;
 	text-align: center;
-	color: #ccc;
 	cursor: pointer;
 }
 
@@ -523,5 +523,10 @@ div {
 #j-video-upload-select:hover{
 	color: #aaa;
 	background-color: rgba(50, 50, 50, 0.8);
+}
+
+#time{
+	height: 27px;
+	line-height: 27px;
 }
 

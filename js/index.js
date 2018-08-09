@@ -1,6 +1,6 @@
 // 当前环境：b for broswer, c for client
 
-const env = "b";
+const env = "c";
 
 let j_video = new Vue({
     el: "#j-video",
