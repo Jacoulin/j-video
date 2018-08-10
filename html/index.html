@@ -31,17 +31,17 @@
             <div id="j-video-top-right">
                 <ul>
                     <li>
-                        <a id="btn-min">
+                        <a id="btn-min" @click="windowMin()">
                             <i class="mdi mdi-window-minimize mdi-18px"></i>
                         </a>
                     </li>
                     <li>
-                        <a id="btn-max">
-                            <i class="mdi mdi-window-maximize mdi-18px"></i>
+                        <a id="btn-max" @click="windowMax()">
+                            <i class="mdi mdi-window-maximize mdi-18px" :class="{'mdi-window-maximize': !maximized, 'mdi-window-restore': maximized}"></i>
                         </a>
                     </li>
                     <li>
-                        <a id="btn-close">
+                        <a id="btn-close" @click="windowClose()">
                             <i class="mdi mdi-window-close mdi-18px"></i>
                         </a>
                     </li>
@@ -52,12 +52,12 @@
             </div>
         </div>
 
-        <div id="j-video-screen">
-            <div id="j-video-screen-left"></div>
-            <video ref="video" width="100%" height="100%" @loadedmetadata="loadedmetadata()" @timeupdate="timeupdate()">
+        <div id="j-video-middle">
+            <div id="j-video-middle-left"></div>
+            <video ref="j-video-screen" width="100%" height="100%" @loadedmetadata="getDuration()" @timeupdate="getCurrentTime()">
                 <source src="../res/test.mp4" type="video/mp4">
             </video>
-            <div id="j-video-screen-right">
+            <div id="j-video-middle-right">
                 <ul>
                     <li>第一集</li>
                     <li>第二集</li>
@@ -70,7 +70,7 @@
         <div id="j-video-bottom" show="true">
             <div id="j-video-process" control="false">
                 <div id="j-video-process-back" @click="pause()">&lt;&lt;</div>
-                <div id="j-video-process-bar">
+                <div id="j-video-process-bar" @mouseover="hover()">
                     <div id="j-video-process-load"></div>
                     <div id="j-video-process-play">
                         <div id="j-video-process-drag"></div>

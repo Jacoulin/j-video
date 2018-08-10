@@ -1,22 +1,5 @@
 // 引入electron
 const electron = require('electron');
-
-const ipc = electron.ipcMain;
-
-//登录窗口最小化
-ipc.on('window-min',function(){
-  mainWindow.minimize();
-});
-//登录窗口最大化
-ipc.on('window-max',function(){
-  mainWindow.maximize();
-});
-//登录窗口关闭
-ipc.on('window-close',function(){
-  mainWindow.close();
-});
-
-
 // app控制整个Electron的声明周期
 const app =electron.app;
 // 创建一个本地的窗口
@@ -26,14 +9,8 @@ let mainWindow;
 
 function createWindow(){
     mainWindow = new BrowserWindow({
-        width: 360,
-        height: 480,
-
-        resizable: false,
-
-        maximizable: false,
-
-        transparent: true,
+        width: 480,
+        height: 320,
 
         frame: false
     });
@@ -48,18 +25,46 @@ function createWindow(){
     })
 }
 
-// 生命周期的函数定义
-// 这里好好看api http://electron.atom.io/docs/api/app/
 app.on("ready",createWindow);
 
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
 });
 
 app.on('activate', function () {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+const ipcMain = electron.ipcMain;
+
+//窗口最小化
+ipcMain.on('window-min-req', (event, arg) => {
+    mainWindow.minimize();
+});
+/**
+ * 窗口最大化
+ *
+ * 设置无边框窗口时，使用win.maximize()对窗口进行最大化，会导致意想不到的错误
+ *
+ * 改为使用win.setSimpleFullScreen(true)的方式对窗口进行最大化
+ *
+ */
+//窗口最大化
+ipcMain.on('window-max-req', (event, arg) => {
+    if (mainWindow.isFullScreen()) {
+        mainWindow.setSimpleFullScreen(false);
+    } else {
+        // mainWindow.maximize();
+        mainWindow.setSimpleFullScreen(true);
+    }
+    console.log(mainWindow.getSize());
+    event.returnValue = mainWindow.isFullScreen();
+});
+//窗口关闭
+ipcMain.on('window-close-req', (event, arg) => {
+    mainWindow.close();
 });

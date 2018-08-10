@@ -2,29 +2,46 @@
 
 const env = "c";
 
+const ipcRenderer = env === 'c' ? require('electron').ipcRenderer : null;
+
 let j_video = new Vue({
     el: "#j-video",
     data: {
         played: false,
+        maximized: false,
         currentTime: 0,
         duration: 0
     },
     methods: {
         play: function () {
-            if (this.$refs.video.paused) {
+            if (this.$refs['j-video-screen'].paused) {
                 this.played = true;
-                // this.currentTime = this.$refs.video.currentTime;
-                this.$refs.video.play();
+                this.$refs['j-video-screen'].play();
             } else {
                 this.played = false;
-                this.$refs.video.pause();
+                this.$refs['j-video-screen'].pause();
             }
         },
-        loadedmetadata: function () {
-            this.duration = parseInt(this.$refs.video.duration);
+        getDuration: function () {
+            this.duration = Math.floor(this.$refs['j-video-screen'].duration);
         },
-        timeupdate: function () {
-            this.currentTime = parseInt(this.$refs.video.currentTime);
+        getCurrentTime: function () {
+            this.currentTime = Math.floor(this.$refs['j-video-screen'].currentTime);
+        },
+        windowMin: function () {
+            if(ipcRenderer !== null){
+                ipcRenderer.send('window-min-req');
+            }
+        },
+        windowMax: function () {
+            if(ipcRenderer !== null){
+                this.maximized = ipcRenderer.sendSync('window-max-req');
+            }
+        },
+        windowClose: function () {
+            if(ipcRenderer !== null){
+                ipcRenderer.send('window-close-req');
+            }
         },
         screenMax: function () {
             j_video_screen.$el.width = 560;
@@ -56,24 +73,4 @@ let j_video = new Vue({
     }
 });
 
-// 窗口控制：c
-
-switch(env){
-    case "c":
-        let ipc = require('electron').ipcRenderer;
-        document.getElementById('btn-min').addEventListener('click', () => {
-            ipc.send('window-min');
-        });
-        document.getElementById('btn-max').addEventListener('click', () => {
-            document.getElementById('j-video').style.margin = '0';
-            ipc.send('window-max');
-        });
-        document.getElementById('btn-close').addEventListener('click', () => {
-            ipc.send('window-close');
-        });
-        break;
-    case "b":
-    default:
-        break;
-}
 
