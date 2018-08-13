@@ -7,8 +7,16 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Electron Main",
+            "name": "pc",
             "runtimeExecutable": "C:/Users/52800/node_modules/.bin/electron",
+            "program": "${workspaceFolder}/main.js",
+            "protocol": "inspector"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "dt",
+            "runtimeExecutable": "C:/Users/Jacoulin/node_modules/.bin/electron",
             "program": "${workspaceFolder}/main.js",
             "protocol": "inspector"
         }

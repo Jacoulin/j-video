@@ -76,6 +76,9 @@ div {
 	background-color: #000;
 	/* 防止进度条撑大窗口 */
 	overflow: hidden;
+
+	margin: 5px;
+	box-shadow: 0 0 5px;
 }
 
 #j-video-top {
@@ -203,8 +206,8 @@ div {
 }
 
 #j-video-middle {
-	width: calc(100vw);
-	height: calc(100vh - 74px);
+	width: calc(100vw - 10px);
+	height: calc(100vh - 80px);
 	margin: 0 auto;
 	text-align: center;
 }
