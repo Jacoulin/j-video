@@ -35,6 +35,46 @@ div {
 	box-sizing: border-box;
 }
 
+.non-drag-bar-top{
+	position: absolute;
+	width: calc(100% + 5px);
+	height: 5px;
+	top: 0;
+	left: 0;
+
+	-webkit-app-region: no-drag;
+}
+
+.non-drag-bar-left{
+	position: absolute;
+	width: 5px;
+	height: calc(100% + 5px);
+	top: 0;
+	left: 0;
+
+	-webkit-app-region: no-drag;
+}
+
+.non-drag-bar-right{
+	position: absolute;
+	width: 5px;
+	height: calc(100%);
+	top: 0;
+	right: 0;
+
+	-webkit-app-region: no-drag;
+}
+
+.non-drag-bar-bottom{
+	position: absolute;
+	width: calc(100% + 5px);
+	height: 5px;
+	bottom: 0;
+	left: 0;
+
+	-webkit-app-region: no-drag;
+}
+
 .v-center {
 	position: relative;
 	top: 50%;
@@ -76,9 +116,7 @@ div {
 	background-color: #000;
 	/* 防止进度条撑大窗口 */
 	overflow: hidden;
-
-	margin: 5px;
-	box-shadow: 0 0 5px;
+	/* border: 1px solid #fff; */
 }
 
 #j-video-top {

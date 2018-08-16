@@ -17,12 +17,13 @@ let maxBounds;
 
 function createWindow(){
     mainWindow = new BrowserWindow({
-        width: 480,
-        height: 320,
+        width: 100,
+        height: 100,
+        show:false,
 
-
-        useContentSize: true,
-        transparent: true,
+        // backgroundColor: '#50FFFFFF',
+        // transparent: true,
+        thickFrame: true,
         frame: false
     });
 
@@ -45,12 +46,16 @@ function createWindow(){
         mainWindow.show()
     });
 
-    mainWindow.on("closed",function(){
+    mainWindow.on('closed',function(){
         mainWindow = null
     });
+
+    mainWindow.on('maximize', (e, cmd) => {
+        console.log('最大化');
+    })
 }
 
-app.on("ready",createWindow);
+app.on('ready',createWindow);
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
@@ -112,6 +117,8 @@ ipcMain.on('window-max-req',(event, arg) =>{
         mainWindow.maximize();
     }
 
+    console.log(mainWindow.isMaximizable());
+    console.log(mainWindow.isMaximized());
     event.returnValue = mainWindow.isMaximized();
 });
 
