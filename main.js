@@ -40,7 +40,7 @@ function createWindow(){
     mainWindow.loadURL('file://' + __dirname + '/html/index.html');
 
     // 打开开发者工具
-    // mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools();
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
@@ -52,6 +52,7 @@ function createWindow(){
 
     mainWindow.on('maximize', (e, cmd) => {
         console.log('最大化');
+        mainWindow.webContents.send('window-max-req')
     })
 }
 

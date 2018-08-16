@@ -74,3 +74,8 @@ let j_video = new Vue({
 });
 
 
+ipcRenderer.on('window-max-req', (event, message) => {
+    alert("hhahha")
+});
+
+
