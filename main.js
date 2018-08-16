@@ -17,8 +17,8 @@ let maxBounds;
 
 function createWindow(){
     mainWindow = new BrowserWindow({
-        width: 100,
-        height: 100,
+        width: 300,
+        height: 300,
         show:false,
 
         // backgroundColor: '#50FFFFFF',

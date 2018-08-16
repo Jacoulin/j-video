@@ -36,8 +36,8 @@ div {
 }
 
 .non-drag-bar-top{
-	position: absolute;
-	width: calc(100% + 5px);
+	position: fixed;
+	width: calc(100%);
 	height: 5px;
 	top: 0;
 	left: 0;
@@ -45,10 +45,20 @@ div {
 	-webkit-app-region: no-drag;
 }
 
+.non-drag-bar-bottom{
+	position: fixed;
+	width: calc(100%);
+	height: 5px;
+	bottom: 0;
+	left: 0;
+
+	-webkit-app-region: no-drag;
+}
+
 .non-drag-bar-left{
-	position: absolute;
+	position: fixed;
 	width: 5px;
-	height: calc(100% + 5px);
+	height: calc(100%);
 	top: 0;
 	left: 0;
 
@@ -56,21 +66,11 @@ div {
 }
 
 .non-drag-bar-right{
-	position: absolute;
+	position: fixed;
 	width: 5px;
 	height: calc(100%);
 	top: 0;
 	right: 0;
-
-	-webkit-app-region: no-drag;
-}
-
-.non-drag-bar-bottom{
-	position: absolute;
-	width: calc(100% + 5px);
-	height: 5px;
-	bottom: 0;
-	left: 0;
 
 	-webkit-app-region: no-drag;
 }
@@ -244,8 +244,8 @@ div {
 }
 
 #j-video-middle {
-	width: calc(100vw - 10px);
-	height: calc(100vh - 80px);
+	width: calc(100vw - 0px);
+	height: calc(100vh - 70px);
 	margin: 0 auto;
 	text-align: center;
 }
