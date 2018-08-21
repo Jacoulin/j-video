@@ -21,7 +21,7 @@ function createWindow(){
         height: 300,
         show:false,
 
-        // backgroundColor: '#50FFFFFF',
+        // backgroundColor: '#000',
         // transparent: true,
         thickFrame: true,
         frame: false

@@ -129,11 +129,11 @@ div {
 	z-index: 1; 
 
 	-webkit-app-region: drag;
+	-webkit-user-select:none;
 }
 
 #j-video-top-left {
 	position: absolute;
-	left: 10px;
 	top: 50%;
 	color: #ccc;
 	transform: translateY(-50%);
@@ -145,6 +145,9 @@ div {
 	display: inline-block;
 	text-align: center;
 	cursor: pointer;
+	width: 30px;
+    height: 30px;
+    line-height: 30px;
 }
 
 #j-video-top-left a:hover{
@@ -162,7 +165,7 @@ div {
 #j-video-top-right {
 	position: absolute;
 	top: 50%;
-	right: 10px;
+	right: 0;
 	transform: translateY(-50%);
 
 	-webkit-app-region: no-drag;
@@ -191,7 +194,7 @@ div {
 }
 
 #j-video-top-right li{
-	margin-right: 10px;
+	margin-right: 0;
 }
 
 #j-video-top-right li:last-child{
@@ -204,6 +207,9 @@ div {
 	text-align: center;
 	color: #ccc;
 	cursor: pointer;
+	width: 30px;
+    height: 30px;
+    line-height: 30px;
 }
 
 #j-video-top-right li a:hover {
