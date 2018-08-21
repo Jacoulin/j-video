@@ -21,10 +21,15 @@ function createWindow(){
         height: 300,
         show:false,
 
-        // backgroundColor: '#50FFFFFF',
+        minWidth:300,
+        minHeight:300,
+
+        autoHideMenuBar:true,
+
+        backgroundColor: '#000',
         // transparent: true,
         thickFrame: true,
-        frame: false
+        // frame: false
     });
 
     screenWidth = electron.screen.getPrimaryDisplay().workAreaSize.width;
@@ -40,7 +45,7 @@ function createWindow(){
     mainWindow.loadURL('file://' + __dirname + '/html/index.html');
 
     // 打开开发者工具
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
