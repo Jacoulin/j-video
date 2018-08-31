@@ -28,7 +28,7 @@ function createWindow(){
 
         backgroundColor: '#000',
         // transparent: true,
-        thickFrame: true,
+        // thickFrame: true,
         // frame: false
     });
 
